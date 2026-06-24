@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ChevronDown } from 'lucide-react'
+import logoImg from '../assets/images/logo.png'
 
 const navLinks = [
   { label: 'Home', href: '#' },
@@ -24,23 +25,21 @@ export default function Navbar() {
   return (
     <>
       <motion.header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? 'bg-navy-800/98 backdrop-blur-md border-b border-navy-700/60 shadow-lg' : 'bg-navy-800'
-        }`}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-navy-800/98 backdrop-blur-md border-b border-navy-700/60 shadow-lg' : 'bg-navy-800'
+          }`}
         initial={{ y: -80 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20">
+        <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-20 gap-4">
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 group">
             {/* Styled Logo matching screenshot (rotating green ring with triangle/A indicator) */}
-            <div className="relative w-10 h-10 flex-shrink-0">
-              <div className="absolute inset-0 rounded-full border-4 border-lime-brand/30 border-t-lime-brand animate-[spin_8s_linear_infinite]" />
-              <div className="absolute inset-1.5 rounded-full bg-lime-brand flex items-center justify-center">
-                <span className="font-display font-black text-navy-950 text-sm">P</span>
-              </div>
-            </div>
+            <img
+              src={logoImg}
+              alt="Paramount Cutting Tools Logo"
+              className="h-12 w-auto object-contain flex-shrink-0"
+            />
             <div className="flex flex-col leading-[1.1]">
               <span className="font-display font-extrabold text-base lg:text-lg uppercase tracking-wider text-white">
                 Paramount
@@ -51,29 +50,28 @@ export default function Navbar() {
             </div>
           </a>
 
-          {/* Desktop Nav Links */}
-          <nav className="hidden xl:flex items-center gap-7">
-            {navLinks.map((link) => (
-              <div key={link.label} className="relative group">
-                <a
-                  href={link.href}
-                  className="font-display font-bold uppercase text-[11px] lg:text-xs tracking-wider text-white hover:text-lime-brand transition-colors duration-200 flex items-center gap-1 py-2"
-                >
-                  {link.label}
-                  {link.label === 'Products' && <ChevronDown size={12} className="text-white/70 group-hover:text-lime-brand" />}
-                </a>
-                
-                {/* Micro-underline on active/hover */}
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-lime-brand group-hover:w-full transition-all duration-200" />
-              </div>
-            ))}
-          </nav>
+          {/* Desktop Nav Links & CTA (Right) */}
+          <div className="hidden xl:flex items-center gap-8">
+            <nav className="flex items-center gap-7">
+              {navLinks.map((link) => (
+                <div key={link.label} className="relative group">
+                  <a
+                    href={link.href}
+                    className="font-display font-bold uppercase text-[11px] lg:text-xs tracking-wider text-white hover:text-lime-brand transition-colors duration-200 flex items-center gap-1 py-2"
+                  >
+                    {link.label}
+                    {link.label === 'Products' && <ChevronDown size={12} className="text-white/70 group-hover:text-lime-brand" />}
+                  </a>
 
-          {/* CTA / Action Buttons */}
-          <div className="hidden xl:flex items-center gap-4">
+                  {/* Micro-underline on active/hover */}
+                  <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-lime-brand group-hover:w-full transition-all duration-200" />
+                </div>
+              ))}
+            </nav>
+
             <a
               href="#contact"
-              className="bg-lime-brand hover:bg-lime-brandHover text-navy-900 font-display font-extrabold uppercase text-[11px] tracking-wider px-5 py-3 rounded-none shadow-md hover:shadow-lime-brand/20 transition-all duration-200"
+              className="bg-lime-brand hover:bg-lime-brandHover text-navy-900 font-display font-extrabold uppercase text-[11px] tracking-wider px-5 py-3 rounded-none shadow-md hover:shadow-lime-brand/20 transition-all duration-200 flex-shrink-0"
             >
               Get a Quote
             </a>

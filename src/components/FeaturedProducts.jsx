@@ -35,7 +35,7 @@ export default function FeaturedProducts() {
   return (
     <section ref={ref} className="py-20 bg-offwhite">
       <div className="max-w-7xl mx-auto px-6">
-        
+
         {/* Section Header */}
         <div className="flex items-center justify-between mb-10">
           <div className="flex items-center gap-2 border-l-4 border-lime-brand pl-4">
@@ -43,7 +43,7 @@ export default function FeaturedProducts() {
               Featured <span className="text-lime-brand">Products</span>
             </h2>
           </div>
-          
+
           {/* Navigation Arrows (Decorative matching client screenshot) */}
           <div className="flex gap-2">
             <button className="w-9 h-9 rounded-full border border-navy-800/30 flex items-center justify-center text-navy-800 hover:bg-navy-800 hover:text-white transition-colors duration-200">
@@ -79,9 +79,9 @@ export default function FeaturedProducts() {
                 <h3 className="font-display font-black uppercase text-[10px] lg:text-[11px] tracking-wider text-navy-900 mb-2 line-clamp-2 min-h-[32px]">
                   {product.name}
                 </h3>
-                
-                <a 
-                  href="#contact" 
+
+                <a
+                  href="#contact"
                   className="mt-auto inline-flex items-center justify-center gap-1.5 font-display font-bold uppercase text-[9px] tracking-widest text-lime-brand group-hover:text-lime-brandHover transition-colors"
                 >
                   View Details
@@ -91,7 +91,6 @@ export default function FeaturedProducts() {
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   )
