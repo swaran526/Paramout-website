@@ -2,14 +2,13 @@ import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import StatsBar from './components/StatsBar'
 import About from './components/About'
-import ToolingPortfolio from './components/ToolingPortfolio'
-import ProductCategories from './components/ProductCategories'
+import IntegratedProductsShowcase from './components/ToolingPortfolio'
 import FeaturedProducts from './components/FeaturedProducts'
 import WhyChooseUs from './components/WhyChooseUs'
-import ManufacturingCapabilities from './components/ManufacturingCapabilities'
 import ManufacturingProcess from './components/ManufacturingProcess'
 import ValueProposition from './components/ValueProposition'
 import Industries from './components/Industries'
+import OurTeam from './components/OurTeam'
 import Contact from './components/Contact'
 import FindUs from './components/FindUs'
 import BottomCTA from './components/BottomCTA'
@@ -17,20 +16,19 @@ import Footer from './components/Footer'
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-[#030712]">
+    <div className="min-h-screen bg-navy-950">
       <Navbar />
       <main>
         <Hero />
         <StatsBar />
         <About />
-        <ToolingPortfolio />
-        <ProductCategories />
+        <IntegratedProductsShowcase />
         <FeaturedProducts />
         <WhyChooseUs />
-        <ManufacturingCapabilities />
         <ManufacturingProcess />
         <ValueProposition />
         <Industries />
+        <OurTeam />
         <Contact />
         <FindUs />
         <BottomCTA />

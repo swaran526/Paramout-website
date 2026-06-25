@@ -10,8 +10,12 @@ export default function Footer() {
         return '#about'
       case 'Products':
         return '#products'
+      case 'Core Values':
+        return '#value-proposition'
       case 'Industries':
         return '#industries'
+      case 'Our Team':
+        return '#team'
       case 'Contact Us':
         return '#contact'
       default:
@@ -25,17 +29,17 @@ export default function Footer() {
       <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-lime-brand via-lime-brandHover to-transparent" />
 
       <div className="max-w-7xl mx-auto px-6 pt-16 pb-8">
-        
+
         {/* 4-Column Horizontal Grid Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-          
+
           {/* Column 1: Brand Profile */}
           <div>
             {/* Logo */}
             <div className="flex items-center gap-3 mb-5">
-              <img 
-                src={logoImg} 
-                alt="Paramount Cutting Tools Logo" 
+              <img
+                src={logoImg}
+                alt="Paramount Cutting Tools Logo"
                 className="h-12 w-auto object-contain flex-shrink-0"
               />
               <div className="flex flex-col leading-[1.1]">
@@ -44,7 +48,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-steel-400 text-xs sm:text-sm leading-relaxed mb-4 max-w-xs">
-              Delivering precision cutting solutions that drive performance and productivity across global manufacturing industries.
+              Precision engineering meets innovation. Manufacturing cutting-edge solutions for the mechanical industry since decades.
             </p>
           </div>
 
@@ -54,10 +58,10 @@ export default function Footer() {
               Quick Links
             </h4>
             <ul className="flex flex-col gap-3">
-              {['Home', 'About Us', 'Products', 'Industries', 'Contact Us'].map((link) => (
+              {['Home', 'About Us', 'Products', 'Core Values', 'Industries', 'Our Team', 'Contact Us'].map((link) => (
                 <li key={link}>
-                  <a 
-                    href={getLinkHref(link)} 
+                  <a
+                    href={getLinkHref(link)}
                     className="text-steel-400 hover:text-lime-brand transition-colors text-xs font-body flex items-center gap-1.5 group"
                   >
                     <span className="w-1 h-1 rounded-full bg-lime-brand/30 group-hover:bg-lime-brand transition-colors flex-shrink-0" />
@@ -83,8 +87,8 @@ export default function Footer() {
                 'Special Tools'
               ].map((product) => (
                 <li key={product}>
-                  <a 
-                    href="#products" 
+                  <a
+                    href="#products"
                     className="text-steel-400 hover:text-lime-brand transition-colors text-xs font-body flex items-center gap-1.5 group"
                   >
                     <span className="w-1 h-1 rounded-full bg-lime-brand/30 group-hover:bg-lime-brand transition-colors flex-shrink-0" />
@@ -101,18 +105,18 @@ export default function Footer() {
               Contact Info
             </h4>
             <div className="flex flex-col gap-3">
-              <a href="tel:+919876543210" className="flex items-center gap-2.5 text-steel-300 hover:text-lime-brand transition-colors text-xs">
+              <a href="tel:+919900858297" className="flex items-center gap-2.5 text-steel-300 hover:text-lime-brand transition-colors text-xs">
                 <Phone size={13} className="text-lime-brand flex-shrink-0" />
-                +91 98765 43210
+                +91 99008 58297
               </a>
-              <a href="mailto:info@paramountco.in" className="flex items-center gap-2.5 text-steel-300 hover:text-lime-brand transition-colors text-xs">
+              <a href="mailto:tools@paramountco.in" className="flex items-center gap-2.5 text-steel-300 hover:text-lime-brand transition-colors text-xs">
                 <Mail size={13} className="text-lime-brand flex-shrink-0" />
-                info@paramountco.in
+                tools@paramountco.in
               </a>
               <div className="flex items-start gap-2.5 text-steel-400 text-xs">
                 <MapPin size={13} className="text-lime-brand flex-shrink-0 mt-0.5" />
                 <span>
-                  B-23, Industrial Area,<br />Ludhiana, Punjab, India
+                  Paramount Cutting Tools,<br />Bangalore, Karnataka, India
                 </span>
               </div>
             </div>

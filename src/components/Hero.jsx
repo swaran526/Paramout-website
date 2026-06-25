@@ -2,12 +2,15 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 
-import hero1 from '../assets/images/hero_1.webp'
-import hero2 from '../assets/images/hero_2.png'
-import hero3 from '../assets/images/hero_3.jpg'
-import hero4 from '../assets/images/hero_4.png'
+import hero1 from '../assets/images/hero/hero_111.webp'
+import hero2 from '../assets/images/hero/hero_222.png'
+import hero3 from '../assets/images/hero/hero_333.jpeg'
+import hero4 from '../assets/images/hero/hero_444.png'
+import hero5 from '../assets/images/hero/hero_555.jpeg'
+import hero6 from '../assets/images/hero/hero_666.jpeg'
 
-const bgImages = [hero1, hero2, hero3, hero4]
+
+const bgImages = [hero1, hero2, hero3, hero4, hero5, hero6]
 
 export default function Hero() {
   const [bgIndex, setBgIndex] = useState(0)
@@ -106,6 +109,9 @@ export default function Hero() {
         <span className="font-display font-bold text-[9px] uppercase tracking-[0.3em] text-steel-400">Scroll</span>
         <div className="w-px h-10 bg-gradient-to-b from-lime-brand to-transparent animate-[pulse_2s_infinite]" />
       </div>
+
+      {/* Bottom green accent line */}
+      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-lime-brand to-transparent z-20" />
     </section>
   )
 }

@@ -1,17 +1,17 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Building2, Users, Wrench, Globe } from 'lucide-react'
+import { Building2, Users, Wrench, HeartPulse } from 'lucide-react'
 import AnimatedCounter from './AnimatedCounter'
 
 const stats = [
-  { value: 15, suffix: '+', label: 'Years of Experience', icon: Building2 },
-  { value: 500, suffix: '+', label: 'Satisfied Customers', icon: Users },
-  { value: 2000, suffix: '+', label: 'Products Delivered', icon: Wrench },
-  { value: 25, suffix: '+', label: 'Countries Served', icon: Globe },
+  { value: 7, suffix: '+', label: 'Years of Experience', icon: Building2 },
+  { value: 250, suffix: '+', label: 'Satisfied Customers', icon: Users },
+  { value: 1000, suffix: '+', label: 'Products Delivered', icon: Wrench },
+  { value: 98, suffix: '%', label: 'Employee Satisfaction', icon: HeartPulse },
 ]
 
 export default function StatsBar() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1 })
+  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.1 })
 
   return (
     <section ref={ref} className="bg-navy-900 border-y border-navy-700 py-10 relative overflow-hidden">
@@ -27,14 +27,14 @@ export default function StatsBar() {
                 key={stat.label}
                 className="flex items-center gap-4 p-4 border-r last:border-r-0 border-navy-700/50"
                 initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
+                animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+                transition={inView ? { duration: 0.5, delay: i * 0.1 } : { duration: 0 }}
               >
                 {/* Yellow/Green outline icon frame */}
                 <div className="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-none border border-lime-brand/50 text-lime-brand">
                   <Icon size={22} className="stroke-[1.5]" />
                 </div>
-                
+
                 <div className="flex flex-col leading-none">
                   <div className="font-display font-black text-3xl sm:text-4xl text-white flex items-center">
                     {inView && (
@@ -51,7 +51,8 @@ export default function StatsBar() {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-navy-700 to-transparent" />
+      {/* Bottom green accent line */}
+      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-lime-brand to-transparent" />
     </section>
   )
 }

@@ -28,7 +28,7 @@ export default function BottomCTA() {
             Ready to Optimize Your <span className="text-lime-brand">Production?</span>
           </h2>
           
-          <p className="text-steel-300 text-sm sm:text-base leading-relaxed mb-10 max-w-xl mx-auto font-light">
+          <p className="text-steel-200 text-sm sm:text-base leading-relaxed mb-10 max-w-xl mx-auto font-medium">
             Bring your blueprints, material specifications, and cycle times to our engineering team. We deliver custom solutions held to aerospace tolerances.
           </p>
 
@@ -37,7 +37,7 @@ export default function BottomCTA() {
               Request a Quote
               <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
             </a>
-            <a href="tel:+919876543210" className="btn-outline-white py-4 px-8 flex items-center gap-2">
+            <a href="tel:+919900858297" className="btn-outline-white py-4 px-8 flex items-center gap-2">
               <MessageSquare size={14} className="text-lime-brand" />
               Talk to an Engineer
             </a>
