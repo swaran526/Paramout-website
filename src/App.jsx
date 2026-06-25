@@ -6,7 +6,6 @@ import IntegratedProductsShowcase from './components/ToolingPortfolio'
 import FeaturedProducts from './components/FeaturedProducts'
 import WhyChooseUs from './components/WhyChooseUs'
 import ManufacturingProcess from './components/ManufacturingProcess'
-import ValueProposition from './components/ValueProposition'
 import Industries from './components/Industries'
 import OurTeam from './components/OurTeam'
 import Contact from './components/Contact'
@@ -26,7 +25,6 @@ export default function App() {
         <FeaturedProducts />
         <WhyChooseUs />
         <ManufacturingProcess />
-        <ValueProposition />
         <Industries />
         <OurTeam />
         <Contact />

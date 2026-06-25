@@ -1,64 +1,218 @@
-import { motion } from 'framer-motion'
+import { motion, useMotionValue, useTransform, useMotionTemplate } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { Linkedin, Mail, ShieldCheck } from 'lucide-react'
-
-import teamRajesh from '../assets/images/team_rajesh.png'
-import teamVikram from '../assets/images/team_vikram.png'
-import teamAnanya from '../assets/images/team_ananya.png'
-import teamAmit from '../assets/images/team_amit.png'
-import teamSarah from '../assets/images/team_sarah.png'
 
 const teamMembers = [
   {
-    name: 'Rajesh Sharma',
-    role: 'Founder & Managing Director',
-    bio: 'Over 25 years of pioneering engineering in custom carbide tooling systems and metallurgical advancements.',
-    image: teamRajesh,
+    name: 'Pavithra',
+    role: 'Proprietor',
+    bio: 'Leading the organization with strong vision and commitment.',
+    initials: 'P',
+    gradient: 'from-blue-600 via-sky-500 to-cyan-400',
+    bgClass: 'from-blue-500/10 via-sky-500/5 to-cyan-500/10',
+    glowColor: 'shadow-blue-500/25 group-hover:shadow-blue-500/40',
   },
   {
-    name: 'Vikram Malhotra',
-    role: 'Head of R&D and Tool Design',
-    bio: 'Specialist in multi-axis CNC grinding geometry optimization and zero-tolerance chip flow engineering.',
-    image: teamVikram,
+    name: 'Kumar',
+    role: 'Sales & Application',
+    bio: 'Driving sales growth and delivering customer-focused solutions.',
+    initials: 'K',
+    gradient: 'from-rose-500 via-orange-500 to-yellow-400',
+    bgClass: 'from-rose-500/10 via-orange-500/5 to-yellow-500/10',
+    glowColor: 'shadow-orange-500/25 group-hover:shadow-orange-500/40',
   },
   {
-    name: 'Dr. Ananya Goel',
-    role: 'Chief Metallurgist & Materials Scientist',
-    bio: 'Directs the development of proprietary PVD arc ion-plating recipes and sub-micron carbide matrices.',
-    image: teamAnanya,
+    name: 'Arun Kumar',
+    role: 'Production Head',
+    bio: 'Overseeing production operations with precision and efficiency.',
+    initials: 'AK',
+    gradient: 'from-emerald-600 via-emerald-400 to-lime-400',
+    bgClass: 'from-emerald-500/10 via-emerald-500/5 to-lime-500/10',
+    glowColor: 'shadow-emerald-500/25 group-hover:shadow-emerald-500/40',
   },
   {
-    name: 'Amit Verma',
-    role: 'Director of Quality Assurance',
-    bio: 'Oversees Zeiss CMM presetting protocols and digital keyence inspection metrics to guarantee defect-free delivery.',
-    image: teamAmit,
+    name: 'Madhu',
+    role: 'Quality Engineer',
+    bio: 'Ensuring top-tier quality standards at every stage of production.',
+    initials: 'M',
+    gradient: 'from-purple-600 via-indigo-500 to-pink-500',
+    bgClass: 'from-purple-500/10 via-indigo-500/5 to-pink-500/10',
+    glowColor: 'shadow-purple-500/25 group-hover:shadow-purple-500/40',
   },
   {
-    name: 'Sarah Jenkins',
-    role: 'Lead Application & Support Engineer',
-    bio: 'Bridges structural specs with production reality for defense, aerospace, and high-precision automotive sectors.',
-    image: teamSarah,
+    name: 'Dhanviksha',
+    role: 'Accounts Head',
+    bio: 'Managing financial operations with accuracy and responsibility.',
+    initials: 'D',
+    gradient: 'from-pink-600 via-rose-500 to-orange-400',
+    bgClass: 'from-pink-500/10 via-rose-500/5 to-orange-500/10',
+    glowColor: 'shadow-pink-500/25 group-hover:shadow-pink-500/40',
   },
 ]
 
+function TeamMemberCard({ member, variants, index }) {
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+  
+  // Perspective Tilt Effect
+  const rotateX = useTransform(y, [-100, 100], [10, -10])
+  const rotateY = useTransform(x, [-100, 100], [-10, 10])
+  
+  // Glowing cursor spotlight
+  const glowX = useMotionValue(0)
+  const glowY = useMotionValue(0)
+  const glowBg = useMotionTemplate`radial-gradient(250px circle at ${glowX}px ${glowY}px, rgba(163, 230, 53, 0.08), transparent 80%)`
+
+  function handleMouseMove(event) {
+    const rect = event.currentTarget.getBoundingClientRect()
+    const width = rect.width
+    const height = rect.height
+    
+    // Calculate cursor pos relative to card
+    const cursorX = event.clientX - rect.left
+    const cursorY = event.clientY - rect.top
+    glowX.set(cursorX)
+    glowY.set(cursorY)
+    
+    // Calculate rotation values
+    const mouseX = cursorX - width / 2
+    const mouseY = cursorY - height / 2
+    x.set(mouseX)
+    y.set(mouseY)
+  }
+
+  function handleMouseLeave() {
+    x.set(0)
+    y.set(0)
+  }
+
+  return (
+    <motion.div
+      variants={variants}
+      style={{
+        rotateX,
+        rotateY,
+        transformStyle: 'preserve-3d',
+        perspective: 1000
+      }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="group bg-navy-950/60 border border-navy-800 hover:border-navy-700 rounded-2xl relative overflow-hidden shadow-2xl transition-all duration-300 flex flex-col h-full cursor-pointer select-none"
+    >
+      {/* Spotlight Glow Background hover */}
+      <motion.div 
+        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"
+        style={{ background: glowBg }}
+      />
+
+      {/* Top Half - Avatar Area with lighter bg and pattern */}
+      <div 
+        className="p-6 pb-2 relative flex items-center justify-center bg-navy-900/40 border-b border-navy-800/40"
+        style={{ transform: 'translateZ(20px)' }}
+      >
+        {/* Micro tech grid overlay */}
+        <div className="absolute inset-0 bg-grid-navy opacity-15 pointer-events-none" />
+        {/* Radial gradient background behind the circle */}
+        <div className={`absolute inset-0 bg-gradient-to-b ${member.bgClass} opacity-30 group-hover:opacity-50 transition-opacity duration-500`} />
+        
+        {/* Avatar sphere */}
+        <div className="relative w-36 h-36 my-4 flex items-center justify-center">
+          {/* Outer pulsating rings */}
+          <div className="absolute inset-0 rounded-full border border-lime-brand/10 group-hover:border-lime-brand/30 scale-105 group-hover:scale-110 transition-all duration-500 pointer-events-none" />
+          
+          {/* Outer wrapper: Entry Animation */}
+          <motion.div
+            variants={{
+              hidden: { scale: 0, rotate: -180, opacity: 0 },
+              visible: { 
+                scale: 1, 
+                rotate: 0,
+                opacity: 1,
+                transition: { 
+                  type: 'spring', 
+                  stiffness: 90, 
+                  damping: 12,
+                  delay: 0.15 + (index * 0.08)
+                } 
+              }
+            }}
+            className="relative w-32 h-32 flex items-center justify-center"
+          >
+            {/* Inner wrapper: Infinite Float */}
+            <motion.div
+              animate={{ y: [0, -6, 0] }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: index * 0.5
+              }}
+              className={`w-32 h-32 rounded-full bg-gradient-to-br ${member.gradient} flex items-center justify-center relative shadow-lg ${member.glowColor} transition-all duration-500`}
+              style={{ transform: 'translateZ(30px)' }}
+            >
+              {/* Glossy inner sphere effect */}
+              <div className="absolute inset-1 rounded-full bg-black/10 border border-white/20 backdrop-blur-xs flex items-center justify-center">
+                {/* Highlight */}
+                <div className="absolute top-1 left-2 right-2 h-1/3 bg-gradient-to-b from-white/25 to-transparent rounded-t-full pointer-events-none" />
+                
+                {/* Initial letter */}
+                <span className="font-display font-black text-5xl text-white tracking-wider drop-shadow-[0_2px_4px_rgba(0,0,0,0.4)] group-hover:scale-110 transition-transform duration-300">
+                  {member.initials}
+                </span>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Bottom Half - Info Area */}
+      <div 
+        className="p-6 bg-navy-950/80 relative flex-1"
+        style={{ transform: 'translateZ(10px)' }}
+      >
+        {/* Tech corner decorators for details section */}
+        <div className="absolute bottom-3 left-3 w-2 h-2 border-b border-l border-navy-800 group-hover:border-lime-brand/40 transition-colors" />
+        <div className="absolute bottom-3 right-3 w-2 h-2 border-b border-r border-navy-800 group-hover:border-lime-brand/40 transition-colors" />
+
+        <div className="space-y-3">
+          <h3 className="font-display font-black uppercase text-lg tracking-wide text-white group-hover:text-lime-brand transition-colors duration-300 leading-tight">
+            {member.name}
+          </h3>
+          <p className="font-display font-bold text-[10px] text-lime-brand uppercase tracking-wider">
+            {member.role}
+          </p>
+          <p className="text-steel-300 text-xs font-medium leading-relaxed pt-1">
+            {member.bio}
+          </p>
+        </div>
+      </div>
+    </motion.div>
+  )
+}
+
 export default function OurTeam() {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.05 })
+  const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.05 })
 
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.1 }
+      transition: { staggerChildren: 0.12 }
     }
   }
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 35, scale: 0.96 },
+    hidden: { opacity: 0, y: 50, scale: 0.9, rotateX: 12 },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] }
+      rotateX: 0,
+      transition: { 
+        type: 'spring',
+        stiffness: 80,
+        damping: 14,
+        mass: 0.9
+      }
     }
   }
 
@@ -73,83 +227,39 @@ export default function OurTeam() {
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-20 space-y-3">
-          <span className="text-xs font-mono tracking-[0.25em] text-steel-400 uppercase block">
-            // LEADERSHIP & TECHNICAL CORES
-          </span>
-          <h2 className="font-display font-black uppercase text-4xl sm:text-6xl tracking-tight text-white leading-none">
+        <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+          <motion.h2 
+            initial={{ opacity: 0, y: 25 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 25 }}
+            transition={{ duration: 0.6 }}
+            className="font-display font-black uppercase text-4xl sm:text-6xl tracking-tight text-white leading-none"
+          >
             Our <span className="text-lime-brand">Team</span>
-          </h2>
-          <p className="text-steel-200 font-medium text-sm leading-relaxed max-w-md mx-auto pt-2">
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-steel-200 font-medium text-sm leading-relaxed max-w-md mx-auto pt-2"
+          >
             The metallurgy and precision tooling experts engineering industrial performance.
-          </p>
-          <div className="w-10 h-px bg-navy-800 mx-auto pt-4" />
+          </motion.p>
         </div>
 
-        {/* 5-Member Premium Grid Layout */}
+        {/* 5-Member Grid Layout */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6"
         >
-          {teamMembers.map((member) => (
-            <motion.div
-              key={member.name}
-              variants={cardVariants}
-              className="group bg-navy-900/40 border border-navy-800 hover:border-lime-brand/30 rounded-xl relative overflow-hidden p-5 shadow-xl transition-all duration-500 flex flex-col justify-between"
-            >
-              {/* Tactical Tech Corner Decorators */}
-              <div className="absolute top-3 left-3 w-3 h-3 border-t border-l border-navy-800 group-hover:border-lime-brand/40 transition-colors" />
-              <div className="absolute top-3 right-3 w-3 h-3 border-t border-r border-navy-800 group-hover:border-lime-brand/40 transition-colors" />
-
-              <div>
-                {/* Photo frame */}
-                <div className="relative aspect-square w-full mb-5 bg-navy-950 rounded-lg overflow-hidden border border-navy-800/60 group-hover:border-navy-700 transition-colors">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-cover brightness-[0.85] grayscale group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-105 transition-all duration-700 ease-out"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent pointer-events-none" />
-                </div>
-
-                {/* Info and Bio */}
-                <div className="space-y-2 px-1">
-                  <span className="font-mono text-[8px] tracking-[0.15em] text-lime-brand uppercase block">
-                    // ENGINEER VERIFIED
-                  </span>
-                  <h3 className="font-display font-black uppercase text-base tracking-wide text-steel-200 group-hover:text-white transition-colors leading-tight">
-                    {member.name}
-                  </h3>
-                  <p className="font-display font-bold text-[11px] text-steel-400 uppercase tracking-wider">
-                    {member.role}
-                  </p>
-                  <p className="text-steel-200 text-xs font-medium leading-relaxed pt-2">
-                    {member.bio}
-                  </p>
-                </div>
-              </div>
-
-              {/* Social / Support Indicators */}
-              <div className="pt-5 mt-4 border-t border-navy-800/60 flex items-center justify-between px-1">
-                <div className="flex gap-3">
-                  <a href="#" className="text-steel-500 hover:text-lime-brand transition-colors">
-                    <Linkedin size={14} />
-                  </a>
-                  <a href="#" className="text-steel-500 hover:text-lime-brand transition-colors">
-                    <Mail size={14} />
-                  </a>
-                </div>
-                <div className="flex items-center gap-1.5 text-steel-600 group-hover:text-lime-brand/50 transition-colors">
-                  <ShieldCheck size={14} />
-                  <span className="font-mono text-[8px]">ACTIVE</span>
-                </div>
-              </div>
-
-              {/* Ambient Radial Spotlight Base Glow Layer */}
-              <div className="absolute inset-0 bg-radial from-lime-500/0 via-transparent to-transparent group-hover:from-lime-500/5 transition-all duration-500 pointer-events-none blur-xl" />
-            </motion.div>
+          {teamMembers.map((member, index) => (
+            <TeamMemberCard 
+              key={member.name} 
+              member={member} 
+              variants={cardVariants} 
+              index={index}
+            />
           ))}
         </motion.div>
 

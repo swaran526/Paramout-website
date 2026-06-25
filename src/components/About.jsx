@@ -8,7 +8,7 @@ import story4 from '../assets/images/our-story/our_story_4.jpeg'
 const storyImages = [story1, story2, story3, story4]
 import {
   Target, Cpu, Gauge,
-  Workflow, Network, Terminal, CheckCircle2, Shield,
+  Workflow, Network, CheckCircle2, Shield,
   Milestone, Activity, Zap, ShieldCheck, Orbit, Globe, Factory
 } from 'lucide-react'
 

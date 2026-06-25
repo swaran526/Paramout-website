@@ -8,10 +8,10 @@ export default function Footer() {
         return '#'
       case 'About Us':
         return '#about'
+      case 'Why Us':
+        return '#why-us'
       case 'Products':
         return '#products'
-      case 'Core Values':
-        return '#value-proposition'
       case 'Industries':
         return '#industries'
       case 'Our Team':
@@ -58,7 +58,7 @@ export default function Footer() {
               Quick Links
             </h4>
             <ul className="flex flex-col gap-3">
-              {['Home', 'About Us', 'Products', 'Core Values', 'Industries', 'Our Team', 'Contact Us'].map((link) => (
+              {['Home', 'About Us', 'Why Us', 'Products', 'Industries', 'Our Team', 'Contact Us'].map((link) => (
                 <li key={link}>
                   <a
                     href={getLinkHref(link)}

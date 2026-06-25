@@ -1,13 +1,12 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Phone, Mail, MapPin, Send, CheckCircle2 } from 'lucide-react'
+import { Phone, Mail, Send, CheckCircle2 } from 'lucide-react'
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 const contactDetails = [
-  { icon: Phone, label: 'Call Us', value: '+91 99008 58297', href: 'tel:+919900858297' },
-  { icon: Mail, label: 'Email Us', value: 'tools@paramountco.in', href: 'mailto:tools@paramountco.in' },
-  { icon: MapPin, label: 'Our Location', value: 'Paramount Cutting Tools, Bangalore, Karnataka, India', href: '#' },
+  { icon: Phone, label: 'Call Us', value: '+91 99008 58297', subtext: 'Mon - Sat: 9:00 AM - 6:30 PM', href: 'tel:+919900858297' },
+  { icon: Mail, label: 'Email Us', value: 'tools@paramountco.in', subtext: 'Response within 24 business hours', href: 'mailto:tools@paramountco.in' },
 ]
 
 // ─── Animation Variants ───────────────────────────────────────────────────────
@@ -78,28 +77,23 @@ export default function Contact() {
         {/* ══════════════════════════════════════════════
             GRID — contact cards + form
             ══════════════════════════════════════════════ */}
-        <div className="grid lg:grid-cols-12 gap-8 items-start">
+        <div className="grid lg:grid-cols-12 gap-8 items-center">
 
-          {/* ── Contact Info Cards (col-span-4) ──────── */}
+          {/* ── Contact Info Cards (col-span-5) ──────── */}
           <motion.div
-            className="lg:col-span-4 flex flex-col gap-5"
-            initial={{ opacity: 0, x: -40 }}
+            className="lg:col-span-5 flex flex-col gap-4"
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, amount: 0.2 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            viewport={{ once: false, amount: 0.1 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
           >
-            {contactDetails.map(({ icon: Icon, label, value, href }, i) => (
+            {contactDetails.map(({ icon: Icon, label, value, subtext, href }) => (
               <motion.a
                 key={label}
                 href={href}
-                className="flex items-start gap-4 p-6 bg-navy-950/60 border border-navy-800 rounded-2xl relative overflow-hidden group hover:border-lime-brand/30 transition-colors duration-300"
+                className="flex items-start gap-4 p-5 bg-navy-950/60 border border-navy-800 rounded-2xl relative overflow-hidden group hover:border-lime-brand/30 transition-colors duration-300"
                 whileHover={{ y: -3 }}
                 transition={{ duration: 0.3 }}
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: false, amount: 0.2 }}
-                // stagger via inline delay
-                style={{ transitionDelay: `${i * 0.08}s` }}
               >
                 {/* Hover top border sweep */}
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-lime-brand/60 via-lime-brand to-lime-brand/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -108,26 +102,27 @@ export default function Contact() {
                 <div className="absolute inset-0 bg-radial from-lime-500/0 via-transparent to-transparent group-hover:from-lime-500/4 transition-all duration-500 pointer-events-none blur-xl" />
 
                 {/* Icon */}
-                <div className="w-11 h-11 flex-shrink-0 flex items-center justify-center bg-navy-950 border border-navy-800 rounded-xl text-lime-brand group-hover:border-lime-brand/40 group-hover:shadow-[0_0_15px_rgba(163,230,53,0.12)] transition-all duration-300">
-                  <Icon size={18} />
+                <div className="w-10 h-10 flex-shrink-0 flex items-center justify-center bg-navy-950 border border-navy-800 rounded-xl text-lime-brand group-hover:border-lime-brand/40 group-hover:shadow-[0_0_15px_rgba(163,230,53,0.12)] transition-all duration-300">
+                  <Icon size={16} />
                 </div>
 
                 {/* Text */}
                 <div className="relative z-10 space-y-0.5">
                   <p className="font-mono text-[9px] uppercase tracking-widest text-lime-brand">{label}</p>
-                  <p className="text-steel-200 text-sm font-medium group-hover:text-white transition-colors duration-300 leading-relaxed">{value}</p>
+                  <p className="text-white text-sm font-semibold tracking-tight group-hover:text-lime-300 transition-colors duration-300">{value}</p>
+                  <p className="text-steel-400 text-[10px] font-medium leading-relaxed">{subtext}</p>
                 </div>
               </motion.a>
             ))}
           </motion.div>
 
-          {/* ── Form Panel (col-span-8) ───────────────── */}
+          {/* ── Form Panel (col-span-7) ───────────────── */}
           <motion.div
-            className="lg:col-span-8 bg-navy-950/60 border border-navy-800 rounded-2xl p-8 relative overflow-hidden group shadow-2xl"
-            initial={{ opacity: 0, x: 40 }}
+            className="lg:col-span-7 bg-navy-950/60 border border-navy-800 rounded-2xl p-5 relative overflow-hidden group shadow-2xl"
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: false, amount: 0.15 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+            viewport={{ once: false, amount: 0.1 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
           >
             {/* Animated top border sweep */}
             <motion.div
@@ -149,7 +144,7 @@ export default function Contact() {
 
             {submitted ? (
               <motion.div
-                className="flex flex-col items-center justify-center min-h-[440px] text-center relative z-10"
+                className="flex flex-col items-center justify-center min-h-[300px] text-center relative z-10"
                 initial={{ opacity: 0, scale: 0.92 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
@@ -170,102 +165,64 @@ export default function Contact() {
               </motion.div>
             ) : (
               <div className="relative z-10">
-                {/* Form header */}
-                <div className="mb-7 pb-5 border-b border-navy-800">
-                  <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-lime-brand block mb-1">
-                    // REQUEST CONSOLE
-                  </span>
-                  <h3 className="font-display font-black uppercase text-xl text-white tracking-wide">
-                    Request a Custom Quote
-                  </h3>
-                </div>
-
-                <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+                <form onSubmit={handleSubmit} className="flex flex-col gap-3">
 
                   {/* Row 1 */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="font-mono text-[9px] uppercase tracking-widest text-steel-500 mb-2 block">
-                        Full Name *
-                      </label>
-                      <input
-                        type="text" name="name" required value={form.name} onChange={handleChange}
-                        className="w-full bg-navy-900/80 border border-navy-700 focus:border-lime-brand/60 focus:ring-1 focus:ring-lime-brand/20 text-steel-200 text-sm px-4 py-3 rounded-xl outline-none transition-all duration-300 font-body placeholder:text-steel-600"
-                        placeholder="Your Name"
-                      />
-                    </div>
-                    <div>
-                      <label className="font-mono text-[9px] uppercase tracking-widest text-steel-500 mb-2 block">
-                        Company *
-                      </label>
-                      <input
-                        type="text" name="company" required value={form.company} onChange={handleChange}
-                        className="w-full bg-navy-900/80 border border-navy-700 focus:border-lime-brand/60 focus:ring-1 focus:ring-lime-brand/20 text-steel-200 text-sm px-4 py-3 rounded-xl outline-none transition-all duration-300 font-body placeholder:text-steel-600"
-                        placeholder="Company Name"
-                      />
-                    </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <input
+                      type="text" name="name" required value={form.name} onChange={handleChange}
+                      className="w-full bg-navy-900/80 border border-navy-700 focus:border-lime-brand/60 focus:ring-1 focus:ring-lime-brand/20 text-steel-200 text-xs px-4 py-2.5 rounded-xl outline-none transition-all duration-300 font-body placeholder:text-steel-500"
+                      placeholder="Full Name *"
+                    />
+                    <input
+                      type="text" name="company" required value={form.company} onChange={handleChange}
+                      className="w-full bg-navy-900/80 border border-navy-700 focus:border-lime-brand/60 focus:ring-1 focus:ring-lime-brand/20 text-steel-200 text-xs px-4 py-2.5 rounded-xl outline-none transition-all duration-300 font-body placeholder:text-steel-500"
+                      placeholder="Company Name *"
+                    />
                   </div>
 
                   {/* Row 2 */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label className="font-mono text-[9px] uppercase tracking-widest text-steel-500 mb-2 block">
-                        Email *
-                      </label>
-                      <input
-                        type="email" name="email" required value={form.email} onChange={handleChange}
-                        className="w-full bg-navy-900/80 border border-navy-700 focus:border-lime-brand/60 focus:ring-1 focus:ring-lime-brand/20 text-steel-200 text-sm px-4 py-3 rounded-xl outline-none transition-all duration-300 font-body placeholder:text-steel-600"
-                        placeholder="your@company.com"
-                      />
-                    </div>
-                    <div>
-                      <label className="font-mono text-[9px] uppercase tracking-widest text-steel-500 mb-2 block">
-                        Phone
-                      </label>
-                      <input
-                        type="text" name="phone" value={form.phone} onChange={handleChange}
-                        className="w-full bg-navy-900/80 border border-navy-700 focus:border-lime-brand/60 focus:ring-1 focus:ring-lime-brand/20 text-steel-200 text-sm px-4 py-3 rounded-xl outline-none transition-all duration-300 font-body placeholder:text-steel-600"
-                        placeholder="+91 00000 00000"
-                      />
-                    </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    <input
+                      type="email" name="email" required value={form.email} onChange={handleChange}
+                      className="w-full bg-navy-900/80 border border-navy-700 focus:border-lime-brand/60 focus:ring-1 focus:ring-lime-brand/20 text-steel-200 text-xs px-4 py-2.5 rounded-xl outline-none transition-all duration-300 font-body placeholder:text-steel-500"
+                      placeholder="Email Address *"
+                    />
+                    <input
+                      type="text" name="phone" value={form.phone} onChange={handleChange}
+                      className="w-full bg-navy-900/80 border border-navy-700 focus:border-lime-brand/60 focus:ring-1 focus:ring-lime-brand/20 text-steel-200 text-xs px-4 py-2.5 rounded-xl outline-none transition-all duration-300 font-body placeholder:text-steel-500"
+                      placeholder="Phone Number"
+                    />
                   </div>
 
                   {/* Tool type */}
-                  <div>
-                    <label className="font-mono text-[9px] uppercase tracking-widest text-steel-500 mb-2 block">
-                      Tool Type / Application
-                    </label>
+                  <div className="relative">
                     <select
                       name="toolType" value={form.toolType} onChange={handleChange}
-                      className="w-full bg-navy-900/80 border border-navy-700 focus:border-lime-brand/60 focus:ring-1 focus:ring-lime-brand/20 text-steel-400 text-sm px-4 py-3 rounded-xl outline-none transition-all duration-300 font-body appearance-none"
+                      className="w-full bg-navy-900/80 border border-navy-700 focus:border-lime-brand/60 focus:ring-1 focus:ring-lime-brand/20 text-steel-200 text-xs px-4 py-2.5 rounded-xl outline-none transition-all duration-300 font-body appearance-none"
                       style={{ backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 14px center', backgroundSize: '16px' }}
                     >
-                      <option value="" className="bg-navy-950 text-steel-500">Select a category...</option>
-                      <option className="bg-navy-950 text-steel-200">PCD &amp; CBN Tools</option>
-                      <option className="bg-navy-950 text-steel-200">Indexable Tools</option>
-                      <option className="bg-navy-950 text-steel-200">Solid Carbide Tools</option>
-                      <option className="bg-navy-950 text-steel-200">Rotary Files</option>
-                      <option className="bg-navy-950 text-steel-200">Gear Cutting Tools</option>
-                      <option className="bg-navy-950 text-steel-200">Special Tools</option>
+                      <option value="" className="bg-navy-950 text-steel-500">Select Tool Type / Application...</option>
+                      <option className="bg-navy-950 text-steel-200" value="PCD & CBN Tools">PCD &amp; CBN Tools</option>
+                      <option className="bg-navy-950 text-steel-200" value="Indexable Tools">Indexable Tools</option>
+                      <option className="bg-navy-950 text-steel-200" value="Solid Carbide Tools">Solid Carbide Tools</option>
+                      <option className="bg-navy-950 text-steel-200" value="Rotary Files">Rotary Files</option>
+                      <option className="bg-navy-950 text-steel-200" value="Gear Cutting Tools">Gear Cutting Tools</option>
+                      <option className="bg-navy-950 text-steel-200" value="Special Tools">Special Tools</option>
                     </select>
                   </div>
 
                   {/* Message */}
-                  <div>
-                    <label className="font-mono text-[9px] uppercase tracking-widest text-steel-500 mb-2 block">
-                      Message / Specifications
-                    </label>
-                    <textarea
-                      name="message" rows={4} value={form.message} onChange={handleChange}
-                      className="w-full bg-navy-900/80 border border-navy-700 focus:border-lime-brand/60 focus:ring-1 focus:ring-lime-brand/20 text-steel-200 text-sm px-4 py-3 rounded-xl outline-none transition-all duration-300 font-body resize-none placeholder:text-steel-600"
-                      placeholder="Describe your cutting geometries, workpiece profiles, tolerances..."
-                    />
-                  </div>
+                  <textarea
+                    name="message" rows={2} value={form.message} onChange={handleChange}
+                    className="w-full bg-navy-900/80 border border-navy-700 focus:border-lime-brand/60 focus:ring-1 focus:ring-lime-brand/20 text-steel-200 text-xs px-4 py-2.5 rounded-xl outline-none transition-all duration-300 font-body resize-none placeholder:text-steel-500"
+                    placeholder="Describe your geometries, workpiece profiles, tolerances..."
+                  />
 
                   {/* Submit */}
                   <motion.button
                     type="submit"
-                    className="w-full py-4 px-6 bg-lime-brand text-navy-950 font-mono text-xs font-extrabold uppercase tracking-widest rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(163,230,53,0.15)] hover:shadow-[0_0_30px_rgba(163,230,53,0.35)] flex items-center justify-center gap-2 hover:bg-lime-brandHover"
+                    className="w-full py-3 px-6 bg-lime-brand text-navy-950 font-mono text-xs font-extrabold uppercase tracking-widest rounded-xl transition-all duration-300 shadow-[0_0_20px_rgba(163,230,53,0.15)] hover:shadow-[0_0_30px_rgba(163,230,53,0.35)] flex items-center justify-center gap-2 hover:bg-lime-brandHover"
                     whileHover={{ scale: 1.015 }}
                     whileTap={{ scale: 0.98 }}
                   >
