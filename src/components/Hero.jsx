@@ -2,15 +2,21 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
 
-import hero1 from '../assets/images/hero/hero_111.webp'
-import hero2 from '../assets/images/hero/hero_222.png'
-import hero3 from '../assets/images/hero/hero_333.jpeg'
-import hero4 from '../assets/images/hero/hero_444.png'
-import hero5 from '../assets/images/hero/hero_555.jpeg'
-import hero6 from '../assets/images/hero/hero_666.jpeg'
-
-
-const bgImages = [hero1, hero2, hero3, hero4, hero5, hero6]
+const bgImages = [
+  '/images/hero/hero_1.png',
+  '/images/hero/hero_2.png',
+  '/images/hero/hero_3.png',
+  '/images/hero/hero_4.jpeg',
+  '/images/hero/hero_5.png',
+  '/images/hero/hero_6.png',
+  '/images/hero/hero_7.png',
+  '/images/hero/hero_8.png',
+  '/images/hero/hero_9.png',
+  '/images/hero/hero_10.png',
+  '/images/hero/hero_11.png',
+  '/images/hero/hero_12.webp',
+  '/images/hero/hero_13.jpeg'
+]
 
 export default function Hero() {
   const [bgIndex, setBgIndex] = useState(0)
@@ -38,8 +44,8 @@ export default function Hero() {
           />
         </AnimatePresence>
 
-        {/* CHANGED: Adjusted gradient overlay to give a solid dark background on the left for text readability, but clear visibility on the right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/70 to-transparent z-10 pointer-events-none w-full" />
+        {/* CHANGED: Adjusted gradient overlay to cover only the left text area on desktop for readability, leaving the right side clear */}
+        <div className="absolute inset-0 bg-gradient-to-r from-navy-950 via-navy-950/70 to-transparent z-10 pointer-events-none w-full lg:w-[42%]" />
         <div className="absolute inset-0 bg-gradient-to-t from-navy-950/80 via-transparent to-transparent z-10 pointer-events-none" />
 
         {/* Subtle grid line overlay */}
@@ -47,9 +53,9 @@ export default function Hero() {
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-20 max-w-7xl mx-auto px-6 py-20 lg:py-32 w-full">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
+      <div className="relative z-20 max-w-none w-full px-6 lg:pl-12 xl:pl-16 py-20 lg:py-32">
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
+          <div className="lg:col-span-5">
             {/* Global Manufacturing Partner Badge */}
             <motion.div
               initial={{ opacity: 0, y: 15 }}
@@ -63,7 +69,7 @@ export default function Hero() {
 
             {/* Typography */}
             <motion.h1
-              className="font-display font-black uppercase text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.05] tracking-tight text-white mb-6 drop-shadow-md"
+              className="font-display font-black uppercase text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-[1.05] tracking-tight text-white mb-4 drop-shadow-md"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
@@ -71,6 +77,16 @@ export default function Hero() {
               Precision <span className="text-lime-brand">Reimagined.</span><br />
               Engineering Excellence.
             </motion.h1>
+            
+            {/* Secondary Tagline */}
+            <motion.p
+              className="font-mono text-xs uppercase tracking-widest text-lime-brand mb-6"
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.15 }}
+            >
+              Precision In Every Cut
+            </motion.p>
 
             {/* Description Paragraph */}
             <motion.p
@@ -84,23 +100,23 @@ export default function Hero() {
 
             {/* Action buttons */}
             <motion.div
-              className="flex flex-wrap items-center gap-4"
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
-              <a href="#products" className="btn-primary group py-4 px-7 flex items-center gap-2">
+              <a href="#products" className="btn-primary group py-4 px-7 flex items-center justify-center text-center w-full sm:w-auto gap-2">
                 Explore Catalog
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
               </a>
-              <a href="#contact" className="btn-outline-white py-4 px-7 border-white/20 text-white hover:bg-white/10 bg-navy-950/40 backdrop-blur-sm">
+              <a href="#contact" className="btn-outline-white py-4 px-7 border-white/20 text-white hover:bg-white/10 bg-navy-950/40 backdrop-blur-sm flex items-center justify-center text-center w-full sm:w-auto">
                 Contact Us
               </a>
             </motion.div>
           </div>
 
           {/* Right side is intentionally left spacious to show off the brighter changing background tool graphics */}
-          <div className="hidden lg:block" />
+          <div className="hidden lg:block lg:col-span-7" />
         </div>
       </div>
 

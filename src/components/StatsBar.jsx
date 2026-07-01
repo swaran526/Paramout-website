@@ -5,7 +5,7 @@ import AnimatedCounter from './AnimatedCounter'
 
 const stats = [
   { value: 7, suffix: '+', label: 'Years of Experience', icon: Building2 },
-  { value: 250, suffix: '+', label: 'Satisfied Customers', icon: Users },
+  { value: 150, suffix: '+', label: 'Satisfied Customers', icon: Users },
   { value: 1000, suffix: '+', label: 'Products Delivered', icon: Wrench },
   { value: 98, suffix: '%', label: 'Employee Satisfaction', icon: HeartPulse },
 ]
@@ -25,7 +25,7 @@ export default function StatsBar() {
             return (
               <motion.div
                 key={stat.label}
-                className="flex items-center gap-4 p-4 border-r last:border-r-0 border-navy-700/50"
+                className="flex flex-col sm:flex-row items-center sm:items-center text-center sm:text-left gap-3 sm:gap-4 p-2 sm:p-4 border-navy-700/50 border-r even:border-r-0 lg:even:border-r lg:last:border-r-0"
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={inView ? { duration: 0.5, delay: i * 0.1 } : { duration: 0 }}
@@ -35,8 +35,8 @@ export default function StatsBar() {
                   <Icon size={22} className="stroke-[1.5]" />
                 </div>
 
-                <div className="flex flex-col leading-none">
-                  <div className="font-display font-black text-3xl sm:text-4xl text-white flex items-center">
+                <div className="flex flex-col items-center sm:items-start leading-none">
+                  <div className="font-display font-black text-3xl sm:text-4xl text-white flex items-center justify-center sm:justify-start">
                     {inView && (
                       <AnimatedCounter end={stat.value} suffix={stat.suffix} />
                     )}

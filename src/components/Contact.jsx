@@ -202,13 +202,17 @@ export default function Contact() {
                       className="w-full bg-navy-900/80 border border-navy-700 focus:border-lime-brand/60 focus:ring-1 focus:ring-lime-brand/20 text-steel-200 text-xs px-4 py-2.5 rounded-xl outline-none transition-all duration-300 font-body appearance-none"
                       style={{ backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 14px center', backgroundSize: '16px' }}
                     >
-                      <option value="" className="bg-navy-950 text-steel-500">Select Tool Type / Application...</option>
-                      <option className="bg-navy-950 text-steel-200" value="PCD & CBN Tools">PCD &amp; CBN Tools</option>
-                      <option className="bg-navy-950 text-steel-200" value="Indexable Tools">Indexable Tools</option>
-                      <option className="bg-navy-950 text-steel-200" value="Solid Carbide Tools">Solid Carbide Tools</option>
-                      <option className="bg-navy-950 text-steel-200" value="Rotary Files">Rotary Files</option>
-                      <option className="bg-navy-950 text-steel-200" value="Gear Cutting Tools">Gear Cutting Tools</option>
-                      <option className="bg-navy-950 text-steel-200" value="Special Tools">Special Tools</option>
+                      <option value="" className="bg-navy-950 text-steel-500">Select Product / Application...</option>
+                      <option className="bg-navy-950 text-steel-200" value="SOLID CARBIDE TOOLS">SOLID CARBIDE TOOLS</option>
+                      <option className="bg-navy-950 text-steel-200" value="CUSTOMIZED FORM TOOLS">CUSTOMIZED FORM TOOLS</option>
+                      <option className="bg-navy-950 text-steel-200" value="CERMET,PCD AND CARBIDE EXPENDABLE REAMER">CERMET, PCD AND CARBIDE EXPENDABLE REAMER</option>
+                      <option className="bg-navy-950 text-steel-200" value="PCD BORING TOOLS">PCD BORING TOOLS</option>
+                      <option className="bg-navy-950 text-steel-200" value="HOB AND FIRTREE">HOB AND FIRTREE</option>
+                      <option className="bg-navy-950 text-steel-200" value="PCD AND PCBN SPL INSERTS">PCD AND PCBN SPL INSERTS</option>
+                      <option className="bg-navy-950 text-steel-200" value="FINE BORING GUIDE PAD TOOLS">FINE BORING GUIDE PAD TOOLS</option>
+                      <option className="bg-navy-950 text-steel-200" value="SPL PCD WIPER CARTRIDGE">SPL PCD WIPER CARTRIDGE</option>
+                      <option className="bg-navy-950 text-steel-200" value="MICRO TOOLS AND BLANK PREPARATION">MICRO TOOLS AND BLANK PREPARATION</option>
+                      <option className="bg-navy-950 text-steel-200" value="CUSTOMIZED FORM CUTTER">CUSTOMIZED FORM CUTTER</option>
                     </select>
                   </div>
 

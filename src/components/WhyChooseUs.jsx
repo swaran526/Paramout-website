@@ -97,9 +97,9 @@ export default function WhyChooseUs() {
               LEFT COLUMN (40% on desktop)
               ========================================== */}
           <div className="lg:col-span-5 space-y-8 flex flex-col justify-center">
-            <div className="space-y-4">
+            <div className="space-y-4 text-center lg:text-left">
               <motion.h2 
-                className="font-display font-black uppercase text-4xl sm:text-5xl tracking-tight text-white leading-none"
+                className="font-display font-black uppercase text-4xl sm:text-5xl tracking-tight text-white leading-none text-center lg:text-left"
                 initial={{ opacity: 0, y: 25 }}
                 animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 25 }}
                 transition={{ duration: 0.6 }}
@@ -112,7 +112,7 @@ export default function WhyChooseUs() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
                 transition={{ duration: 0.6, delay: 0.15 }}
-                className="text-steel-200 text-sm font-medium leading-relaxed max-w-xl"
+                className="text-steel-200 text-sm font-medium leading-relaxed max-w-xl mx-auto lg:mx-0 text-center lg:text-left"
               >
                 Paramount Cutting Tools combines precision engineering, advanced manufacturing, and technical expertise to deliver reliable cutting tool solutions for industries that demand uncompromising performance.
               </motion.p>

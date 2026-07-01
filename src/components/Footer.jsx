@@ -1,7 +1,7 @@
 import { Phone, Mail, MapPin } from 'lucide-react'
 import logoImg from '../assets/images/logo.png'
 
-export default function Footer() {
+export default function Footer({ onSelectCategory }) {
   const getLinkHref = (link) => {
     switch (link) {
       case 'Home':
@@ -14,8 +14,6 @@ export default function Footer() {
         return '#products'
       case 'Industries':
         return '#industries'
-      case 'Our Team':
-        return '#team'
       case 'Contact Us':
         return '#contact'
       default:
@@ -38,14 +36,17 @@ export default function Footer() {
             {/* Logo */}
             <div className="flex items-center gap-3 mb-5">
               <img
-                src={logoImg}
-                alt="Paramount Cutting Tools Logo"
-                className="h-12 w-auto object-contain flex-shrink-0"
-              />
-              <div className="flex flex-col leading-[1.1]">
-                <span className="font-display font-extrabold text-lg uppercase tracking-wider text-white">Paramount</span>
-                <span className="font-display font-bold text-[10px] uppercase tracking-widest text-lime-brand">Cutting Tools</span>
-              </div>
+              src={logoImg}
+              alt="Paramount Cutting Tools Logo"
+              className="h-12 w-auto object-contain flex-shrink-0 logo-img"
+            />
+            <div className="flex flex-col leading-[1.1]">
+              <span className="font-display font-extrabold text-lg uppercase tracking-wider text-white">Paramount</span>
+              <span className="font-display font-bold text-[10px] uppercase tracking-widest text-lime-brand">Cutting Tools</span>
+              <span className="font-mono text-[8px] uppercase tracking-wider text-steel-400 mt-1">
+                Precision In Every Cut
+              </span>
+            </div>
             </div>
             <p className="text-steel-400 text-xs sm:text-sm leading-relaxed mb-4 max-w-xs">
               Precision engineering meets innovation. Manufacturing cutting-edge solutions for the mechanical industry since decades.
@@ -58,7 +59,7 @@ export default function Footer() {
               Quick Links
             </h4>
             <ul className="flex flex-col gap-3">
-              {['Home', 'About Us', 'Why Us', 'Products', 'Industries', 'Our Team', 'Contact Us'].map((link) => (
+              {['Home', 'About Us', 'Products', 'Industries', 'Contact Us'].map((link) => (
                 <li key={link}>
                   <a
                     href={getLinkHref(link)}
@@ -77,23 +78,29 @@ export default function Footer() {
             <h4 className="font-display font-extrabold uppercase text-xs tracking-wider text-white mb-5 flex items-center gap-2 after:flex-1 after:h-px after:bg-navy-700">
               Products
             </h4>
-            <ul className="flex flex-col gap-3">
+            <ul className="flex flex-col gap-2.5">
               {[
-                'PCD & CBN Tools',
-                'Indexable Tools',
-                'Solid Carbide Tools',
-                'Rotary Files',
-                'Gear Cutting Tools',
-                'Special Tools'
+                'SOLID CARBIDE TOOLS',
+                'CUSTOMIZED FORM TOOLS',
+                'CERMET,PCD AND CARBIDE EXPENDABLE REAMER',
+                'PCD BORING TOOLS',
+                'HOB AND FIRTREE',
+                'PCD AND PCBN SPL INSERTS',
+                'FINE BORING GUIDE PAD TOOLS',
+                'SPL PCD WIPER CARTRIDGE',
+                'MICRO TOOLS AND BLANK PREPARATION',
+                'CUSTOMIZED FORM CUTTER'
               ].map((product) => (
                 <li key={product}>
-                  <a
-                    href="#products"
-                    className="text-steel-400 hover:text-lime-brand transition-colors text-xs font-body flex items-center gap-1.5 group"
+                  <button
+                    onClick={() => {
+                      if (onSelectCategory) onSelectCategory(product)
+                    }}
+                    className="text-steel-400 hover:text-lime-brand transition-colors text-[11px] font-body flex items-center gap-1.5 group bg-transparent border-0 cursor-pointer p-0 text-left"
                   >
                     <span className="w-1 h-1 rounded-full bg-lime-brand/30 group-hover:bg-lime-brand transition-colors flex-shrink-0" />
                     {product}
-                  </a>
+                  </button>
                 </li>
               ))}
             </ul>

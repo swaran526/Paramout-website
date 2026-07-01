@@ -38,11 +38,11 @@ function Step({ step, index, totalSteps }) {
   const isEven = index % 2 === 0
 
   return (
-    <div className={`relative flex items-stretch gap-0 ${isEven ? 'flex-row' : 'flex-row-reverse'}`}>
+    <div className={`relative flex items-stretch gap-0 flex-row-reverse sm:${isEven ? 'flex-row' : 'flex-row-reverse'}`}>
 
       {/* Card Wrapper Box */}
       <motion.div
-        className={`flex-1 pb-16 relative group ${isEven ? 'pr-10 md:pr-16' : 'pl-10 md:pl-16'}`}
+        className={`flex-1 pb-8 relative group pl-6 pr-0 sm:pl-0 sm:pr-0 ${isEven ? 'sm:pr-8 md:pr-12' : 'sm:pl-8 md:pl-12'}`}
         initial={{ opacity: 0, y: -30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: false, amount: 0.15 }}
@@ -64,12 +64,12 @@ function Step({ step, index, totalSteps }) {
           <div className="absolute top-3 left-3 w-2 h-2 border-t border-l border-lime-brand/30 z-20 group-hover:border-lime-brand/60 transition-colors" />
 
           {/* Bounding Text Content wrapper layer driving container sizing dimensions */}
-          <div className="p-6 md:p-8 relative z-10 space-y-3 text-left">
-            <h3 className="font-display font-black uppercase text-lg md:text-xl text-lime-brand group-hover:text-lime-400 transition-colors leading-tight">
+          <div className="p-4 md:p-5 relative z-10 space-y-2 text-left">
+            <h3 className="font-display font-black uppercase text-base md:text-lg text-lime-brand group-hover:text-lime-400 transition-colors leading-tight">
               {step.title}
             </h3>
 
-            <p className="text-steel-200 text-xs md:text-sm font-medium leading-relaxed max-w-2xl">
+            <p className="text-steel-200 text-xs font-medium leading-relaxed max-w-2xl">
               {step.desc}
             </p>
           </div>
@@ -118,7 +118,7 @@ export default function ManufacturingProcess() {
   const { ref, inView } = useInView({ triggerOnce: false, threshold: 0.05 })
 
   return (
-    <section id="process" ref={ref} className="bg-navy-900 text-white py-24 font-body relative overflow-hidden border-t border-navy-800">
+    <section id="process" ref={ref} className="bg-navy-900 text-white py-12 font-body relative overflow-hidden border-t border-navy-800">
 
       {/* Background Subtle Tech Grid */}
       <div className="absolute inset-0 bg-grid-navy opacity-30 pointer-events-none" />
@@ -131,12 +131,12 @@ export default function ManufacturingProcess() {
         {/* ==========================================
             SECTION HEADER SEQUENCE
             ========================================== */}
-        <div className="text-center max-w-2xl mx-auto mb-24 space-y-3">
+        <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
           <motion.h2 
             initial={{ opacity: 0, y: 25 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 25 }}
             transition={{ duration: 0.6 }}
-            className="font-display font-black uppercase text-4xl sm:text-6xl tracking-tight text-white leading-none"
+            className="font-display font-black uppercase text-3xl sm:text-4xl tracking-tight text-white leading-none"
           >
             Manufacturing<br />
             <span className="text-lime-brand">Process</span>
@@ -146,7 +146,7 @@ export default function ManufacturingProcess() {
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.6, delay: 0.15 }}
-            className="text-steel-200 font-medium text-sm leading-relaxed max-w-md mx-auto pt-2"
+            className="text-steel-200 font-medium text-xs leading-relaxed max-w-md mx-auto pt-1"
           >
             Six distinct processing stages, zero structural compromises — from sub-micron tungsten carbide matrices to deployment-ready configurations.
           </motion.p>

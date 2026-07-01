@@ -32,12 +32,12 @@ export default function BottomCTA() {
             Bring your blueprints, material specifications, and cycle times to our engineering team. We deliver custom solutions held to aerospace tolerances.
           </p>
 
-          <div className="flex flex-wrap justify-center items-center gap-4">
-            <a href="#contact" className="btn-primary group py-4 px-8">
+          <div className="flex flex-col sm:flex-row justify-center items-stretch sm:items-center gap-4">
+            <a href="#contact" className="btn-primary group py-4 px-8 flex items-center justify-center text-center w-full sm:w-auto">
               Request a Quote
               <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
             </a>
-            <a href="tel:+919900858297" className="btn-outline-white py-4 px-8 flex items-center gap-2">
+            <a href="tel:+919900858297" className="btn-outline-white py-4 px-8 flex items-center justify-center text-center w-full sm:w-auto gap-2">
               <MessageSquare size={14} className="text-lime-brand" />
               Talk to an Engineer
             </a>

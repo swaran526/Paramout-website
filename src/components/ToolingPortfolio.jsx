@@ -1,6 +1,58 @@
 import { useState } from 'react'
-import { motion } from 'framer-motion'
-import { ChevronRight, Layers, Cpu, Wrench, Cog, Zap, Target } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ChevronRight, Layers, Cpu, Wrench, Cog, Zap, Target, X } from 'lucide-react'
+
+// Product 1
+import prod1_1 from '../assets/images/our_products/solid_carbide_tools/1.png'
+import prod1_2 from '../assets/images/our_products/solid_carbide_tools/2.png'
+import prod1_3 from '../assets/images/our_products/solid_carbide_tools/3.jpg'
+import prod1_4 from '../assets/images/our_products/solid_carbide_tools/4.webp'
+import prod1_5 from '../assets/images/our_products/solid_carbide_tools/5.webp'
+
+// Product 2
+import prod2_1 from '../assets/images/our_products/2ND.png'
+import prod2_2 from '../assets/images/our_products/image (2).png'
+import prod2_3 from '../assets/images/our_products/image (3).png'
+
+// Product 3
+import prod3_1 from '../assets/images/our_products/image (1).png'
+import prod3_2 from '../assets/images/our_products/image (4).png'
+import prod3_3 from '../assets/images/our_products/image (20).png'
+
+// Product 4
+import prod4_1 from '../assets/images/our_products/4.png'
+import prod4_2 from '../assets/images/our_products/image (5).png'
+import prod4_3 from '../assets/images/our_products/image (6).png'
+
+// Product 5
+import prod5_1 from '../assets/images/our_products/5.png'
+import prod5_2 from '../assets/images/our_products/image (7).png'
+import prod5_3 from '../assets/images/our_products/image (8).png'
+
+// Product 6
+import prod6_1 from '../assets/images/our_products/6.png'
+import prod6_2 from '../assets/images/our_products/image (9).png'
+import prod6_3 from '../assets/images/our_products/image (10).png'
+
+// Product 7
+import prod7_1 from '../assets/images/our_products/image (11).png'
+import prod7_2 from '../assets/images/our_products/image (12).png'
+import prod7_3 from '../assets/images/our_products/image (13).png'
+
+// Product 8
+import prod8_1 from '../assets/images/our_products/8.png'
+import prod8_2 from '../assets/images/our_products/image (14).png'
+import prod8_3 from '../assets/images/our_products/image (15).png'
+
+// Product 9
+import prod9_1 from '../assets/images/our_products/9.png'
+import prod9_2 from '../assets/images/our_products/image (16).png'
+import prod9_3 from '../assets/images/our_products/image (17).png'
+
+// Product 10
+import prod10_1 from '../assets/images/our_products/10.png'
+import prod10_2 from '../assets/images/our_products/image (18).png'
+import prod10_3 from '../assets/images/our_products/image (19).png'
 
 // ─── Animation Variants (matching About.jsx style) ───────────────────────────
 
@@ -41,96 +93,139 @@ const cardVariants = {
 
 // ─── Products Data with valid local image paths ───────────────────────────────
 
-const productsData = [
+export const productsData = [
   {
     id: 1,
-    title: "Solid Carbide End Mills",
-    category: "PRODUCT PRECISION",
+    title: "SOLID CARBIDE TOOLS",
+    category: "SOLID CARBIDE TOOLS",
     desc: "High-performance variable helix geometries configured for continuous chatter-free roughing in titanium and aerospace alloys.",
-    img: "/images/WOLF-Werkzeugtechnologie_VHM-Standardwerkzeuge_1.png",
+    img: prod1_1,
+    images: [prod1_1, prod1_2, prod1_3, prod1_4, prod1_5],
     icon: <Layers size={16} />,
     accent: "#A3C614"
   },
   {
     id: 2,
-    title: "PCD Non-Standard Auto Tools",
-    category: "PCD & CBN TOOLS",
-    desc: "Super-hard tooling engineered for high-speed machining of non-ferrous materials, composites, and hardened steels.",
-    img: "/images/WOLF-coating-and-parts_Drehen-1.png",
-    icon: <Cpu size={16} />,
-    accent: "#06B6D4"
-  },
-  {
-    id: 3,
-    title: "Custom Toolholder Assemblages",
-    category: "FACTORY OPERATIONS",
-    desc: "Balanced multi-axis tool holding matrices optimized for high-velocity chip volume evacuation under load structural limits.",
-    img: "/images/tool_in_action.jpg",
+    title: "CUSTOMIZED FORM TOOLS",
+    category: "CUSTOMIZED FORM TOOLS",
+    desc: "Tailor-made cutting tool designs engineered for specific component profiles, minimizing cycle time and maximizing accuracy.",
+    img: prod2_1,
+    images: [prod2_1, prod2_2, prod2_3, prod8_2, prod8_3],
     icon: <Wrench size={16} />,
     accent: "#F59E0B"
   },
   {
-    id: 4,
-    title: "ISO CBN Inserts",
-    category: "PCD & CBN TOOLS",
-    desc: "Sub-micron cubic boron nitride matrices pressed for hard turning operations exceeding structural thresholds with extreme lifecycle durability.",
-    img: "/images/reamer_annotated.jpg",
-    icon: <Zap size={16} />,
-    accent: "#8B5CF6"
-  },
-  {
-    id: 5,
-    title: "Multi-Flute Reamers",
-    category: "SOLID CARBIDE TOOLS",
-    desc: "Premium micro-grain carbide rods ground to precise flute reliefs and edge preps with internal coolant channels for ultra-smooth profiles.",
-    img: "/images/precision_engineering.jpg",
-    icon: <Target size={16} />,
+    id: 3,
+    title: "CERMET,PCD AND CARBIDE EXPENDABLE REAMER",
+    category: "CERMET,PCD AND CARBIDE EXPENDABLE REAMER",
+    desc: "Precision expandable reaming systems with adjustable blades for achieving ultra-tight tolerances and superior surface finishes.",
+    img: prod3_1,
+    images: [prod3_1, prod3_2, prod3_3, prod2_2, prod2_3],
+    icon: <Cpu size={16} />,
     accent: "#10B981"
   },
   {
-    id: 6,
-    title: "Spindle Production Grinding",
-    category: "FACTORY OPERATIONS",
-    desc: "Live CNC multi-axis milling and micro-honing system lines achieving zero-tolerance edge consistency requirements.",
-    img: "/images/slider7.jpg",
-    icon: <Cog size={16} />,
-    accent: "#EF4444"
+    id: 4,
+    title: "PCD BORING TOOLS",
+    category: "PCD BORING TOOLS",
+    desc: "Super-hard PCD boring tools designed for high-speed finish boring of non-ferrous and abrasive non-metallic materials.",
+    img: prod4_1,
+    images: [prod4_1, prod4_2, prod4_3, prod9_2, prod9_3],
+    icon: <Target size={16} />,
+    accent: "#06B6D4"
   },
   {
-    id: 7,
-    title: "Indexable Milling Cutters",
-    category: "INDEXABLE PLATFORMS",
-    desc: "High-efficiency indexable cutter heads and milling bodies engineered to maximize material removal rates across high-stress profiles.",
-    img: "/images/materials_comparison.jpg",
-    icon: <Layers size={16} />,
+    id: 5,
+    title: "HOB AND FIRTREE",
+    category: "HOB AND FIRTREE",
+    desc: "High-precision gear hobs and firtree milling cutters designed for turbine slotting and heavy-duty gear profile manufacturing.",
+    img: prod5_1,
+    images: [prod5_1, prod5_2, prod5_3, prod10_2, prod10_3],
+    icon: <Cog size={16} />,
+    accent: "#8B5CF6"
+  },
+  {
+    id: 6,
+    title: "PCD AND PCBN SPL INSERTS",
+    category: "PCD AND PCBN SPL INSERTS",
+    desc: "Special indexable inserts tipped with premium PCD or PCBN matrices for hard turning and high-speed machining operations.",
+    img: prod6_1,
+    images: [prod6_1, prod6_2, prod6_3, prod3_1, prod2_3],
+    icon: <Zap size={16} />,
     accent: "#EC4899"
   },
   {
+    id: 7,
+    title: "FINE BORING GUIDE PAD TOOLS",
+    category: "FINE BORING GUIDE PAD TOOLS",
+    desc: "Single-point fine boring tools equipped with wear-resistant guide pads for optimal alignment and concentricity in deep holes.",
+    img: prod7_1,
+    images: [prod7_1, prod7_2, prod7_3, prod4_1, prod4_2],
+    icon: <Layers size={16} />,
+    accent: "#EF4444"
+  },
+  {
     id: 8,
-    title: "Heavy Duty Gear Hobs",
-    category: "PRODUCT PRECISION",
-    desc: "Rugged profile carbide cutting teeth optimized for industrial gear profile machining across demanding high-stress environments.",
-    img: "/images/innovation.jpg",
+    title: "SPL PCD WIPER CARTRIDGE",
+    category: "SPL PCD WIPER CARTRIDGE",
+    desc: "Adjustable PCD wiper cartridges designed for face milling cutters to achieve sub-micron surface finishes at high feed rates.",
+    img: prod8_1,
+    images: [prod8_1, prod8_2, prod8_3, prod6_1, prod6_2],
     icon: <Cog size={16} />,
     accent: "#A3C614"
+  },
+  {
+    id: 9,
+    title: "MICRO TOOLS AND BLANK PREPARATION",
+    category: "MICRO TOOLS AND BLANK PREPARATION",
+    desc: "Sub-millimeter micro cutting tools down to 0.05mm and precision ground carbide blanks prepared for custom tool fabrications.",
+    img: prod9_1,
+    images: [prod9_1, prod9_2, prod9_3, prod5_1, prod5_2],
+    icon: <Cpu size={16} />,
+    accent: "#06B6D4"
+  },
+  {
+    id: 10,
+    title: "CUSTOMIZED FORM CUTTER",
+    category: "CUSTOMIZED FORM CUTTER",
+    desc: "Complex profile form cutters manufactured to custom prints for high-productivity machining of specialized industrial parts.",
+    img: prod10_1,
+    images: [prod10_1, prod10_2, prod10_3, prod3_3, prod1_1],
+    icon: <Wrench size={16} />,
+    accent: "#F59E0B"
   }
 ]
 
 const categories = [
-  'ALL ASSETS',
-  'PRODUCT PRECISION',
-  'FACTORY OPERATIONS',
-  'PCD & CBN TOOLS',
+  'ALL PRODUCTS',
   'SOLID CARBIDE TOOLS',
-  'INDEXABLE PLATFORMS'
+  'CUSTOMIZED FORM TOOLS',
+  'CERMET,PCD AND CARBIDE EXPENDABLE REAMER',
+  'PCD BORING TOOLS',
+  'HOB AND FIRTREE',
+  'PCD AND PCBN SPL INSERTS',
+  'FINE BORING GUIDE PAD TOOLS',
+  'SPL PCD WIPER CARTRIDGE',
+  'MICRO TOOLS AND BLANK PREPARATION',
+  'CUSTOMIZED FORM CUTTER'
 ]
 
 // ─── Component ────────────────────────────────────────────────────────────────
 
-export default function IntegratedProductsShowcase() {
-  const [activeFilter, setActiveFilter] = useState('ALL ASSETS')
+export default function IntegratedProductsShowcase({ 
+  activeFilter: propActiveFilter, 
+  setActiveFilter: propSetActiveFilter,
+  selectedProduct: propSelectedProduct,
+  setSelectedProduct: propSetSelectedProduct
+}) {
+  const [localFilter, setLocalFilter] = useState('ALL PRODUCTS')
+  const [localSelectedProduct, setLocalSelectedProduct] = useState(null)
+  const activeFilter = propActiveFilter !== undefined ? propActiveFilter : localFilter
+  const setActiveFilter = propSetActiveFilter !== undefined ? propSetActiveFilter : setLocalFilter
+  const selectedProduct = propSelectedProduct !== undefined ? propSelectedProduct : localSelectedProduct
+  const setSelectedProduct = propSetSelectedProduct !== undefined ? propSetSelectedProduct : setLocalSelectedProduct
 
-  const filteredProducts = activeFilter === 'ALL ASSETS'
+  const filteredProducts = activeFilter === 'ALL PRODUCTS'
     ? productsData
     : productsData.filter(p => p.category === activeFilter)
 
@@ -175,33 +270,6 @@ export default function IntegratedProductsShowcase() {
         </motion.div>
 
         {/* ══════════════════════════════════════════════
-            FILTER TABS — whileInView animated
-            ══════════════════════════════════════════════ */}
-        <motion.div
-          className="flex flex-wrap justify-center gap-2 mb-14"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <div className="flex flex-wrap justify-center gap-1.5 bg-navy-950/70 border border-navy-800/80 p-1.5 rounded-xl shadow-inner backdrop-blur-sm">
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveFilter(cat)}
-                className={`px-4 py-2 font-mono text-[10px] tracking-wider uppercase border transition-all duration-300 rounded-lg ${
-                  activeFilter === cat
-                    ? 'bg-lime-brand text-navy-950 font-extrabold border-lime-brand shadow-[0_0_18px_rgba(163,230,53,0.3)]'
-                    : 'bg-transparent text-steel-400 border-transparent hover:text-white hover:bg-navy-800/60 hover:border-navy-700'
-                }`}
-              >
-                {cat}
-              </button>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* ══════════════════════════════════════════════
             PRODUCT GRID — whileInView + re-stagger on filter
             ══════════════════════════════════════════════ */}
         <motion.div
@@ -216,6 +284,7 @@ export default function IntegratedProductsShowcase() {
             <motion.div
               key={product.id}
               variants={cardVariants}
+              onClick={() => setSelectedProduct(product)}
               className="group border border-navy-800 bg-navy-950/60 rounded-2xl overflow-hidden shadow-2xl hover:border-lime-brand/40 hover:shadow-[0_8px_40px_rgba(163,230,53,0.06)] transition-all duration-500 flex flex-col cursor-pointer"
             >
               {/* ── Image Section (top, always fully visible) ── */}
@@ -277,14 +346,16 @@ export default function IntegratedProductsShowcase() {
                 {/* Divider */}
                 <div className="border-t border-navy-800/60 pt-3">
                   {/* CTA link */}
-                  <a
-                    href="#contact"
-                    className="inline-flex items-center gap-1.5 font-mono text-[10px] text-steel-500 hover:text-lime-brand transition-colors duration-300 group/cta"
-                    onClick={(e) => { e.stopPropagation(); window.location.hash = 'contact'; }}
+                  <button
+                    className="inline-flex items-center gap-1.5 font-mono text-[10px] text-steel-500 hover:text-lime-brand transition-colors duration-300 group/cta bg-transparent border-0 cursor-pointer p-0"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setSelectedProduct(product);
+                    }}
                   >
                     <span>KNOW MORE</span>
                     <ChevronRight size={10} className="transform group-hover/cta:translate-x-1 transition-transform duration-300" />
-                  </a>
+                  </button>
                 </div>
               </div>
 
@@ -313,6 +384,7 @@ export default function IntegratedProductsShowcase() {
 
       {/* Bottom lime accent line */}
       <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-lime-brand to-transparent" />
+
     </section>
   )
 }

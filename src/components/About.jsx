@@ -2,10 +2,29 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import story1 from '../assets/images/our-story/our_story_1.jpeg'
 import story2 from '../assets/images/our-story/our_story_2.png'
-import story3 from '../assets/images/our-story/our_story_3.jpeg'
-import story4 from '../assets/images/our-story/our_story_4.jpeg'
+import story3 from '../assets/images/our-story/our_story_3.png'
+import story4 from '../assets/images/our-story/our_story_4.webp'
+import story5 from '../assets/images/our-story/our_story_5.png'
+import story6 from '../assets/images/our-story/our_story_6.png'
+import story7 from '../assets/images/our-story/our_story_7.png'
+import story8 from '../assets/images/our-story/our_story_8.png'
+import story9 from '../assets/images/our-story/our_story_9.png'
+import story10 from '../assets/images/our-story/our_story_10.png'
+import story11 from '../assets/images/our-story/our_story_11.png'
 
-const storyImages = [story1, story2, story3, story4]
+const storyImages = [
+  story1,
+  story2,
+  story3,
+  story4,
+  story5,
+  story6,
+  story7,
+  story8,
+  story9,
+  story10,
+  story11
+]
 import {
   Target, Cpu, Gauge,
   Workflow, Network, CheckCircle2, Shield,
@@ -286,17 +305,17 @@ export default function About() {
 
           {/* Left Block - Animated Narrative Copy */}
           <motion.div
-            className="lg:col-span-6 space-y-6"
+            className="lg:col-span-6 space-y-6 text-center lg:text-left"
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.2 }}
           >
-            <motion.h3 variants={itemVariants} className="font-display font-black uppercase text-2xl sm:text-3xl tracking-wide text-white">
+            <motion.h3 variants={itemVariants} className="font-display font-black uppercase text-2xl sm:text-3xl tracking-wide text-white text-center lg:text-left">
               Our <span className="text-lime-brand">Story.</span>
             </motion.h3>
 
-            <motion.div variants={itemVariants} className="space-y-4 text-steel-200 text-sm sm:text-base font-medium leading-relaxed">
+            <motion.div variants={itemVariants} className="space-y-4 text-steel-200 text-sm sm:text-base font-medium leading-relaxed text-center lg:text-left">
               <p>
                 Paramount Cutting Tools has been at the forefront of precision manufacturing, delivering high-performance cutting tool solutions to industries across India. What began as a modest workshop has grown into a modern manufacturing facility equipped with advanced technology and world-class production capabilities.
               </p>
@@ -480,7 +499,7 @@ export default function About() {
         
         {/* Unified Full-Width Heading */}
         <motion.div
-          className="border-b border-navy-800 pb-6 mb-12"
+          className="border-b border-navy-800 pb-6 mb-12 text-center lg:text-left"
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: false, amount: 0.3 }}

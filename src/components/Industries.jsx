@@ -113,7 +113,7 @@ export default function Industries() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: false, amount: 0.2 }}
-          className="space-y-4 mb-16 border-b border-navy-800 pb-10"
+          className="text-center max-w-2xl mx-auto space-y-4 mb-16 border-b border-navy-800 pb-10"
         >
           <motion.h2
             variants={headerItemVariants}
@@ -124,7 +124,7 @@ export default function Industries() {
           </motion.h2>
           <motion.p
             variants={headerItemVariants}
-            className="text-steel-300 text-sm font-medium leading-relaxed max-w-2xl"
+            className="text-steel-300 text-sm font-medium leading-relaxed"
           >
             Delivering high-precision cutting tool solutions tailored to the strict demands of global manufacturing sectors.
           </motion.p>
